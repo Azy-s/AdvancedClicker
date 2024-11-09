@@ -54,6 +54,18 @@ namespace AdvancedClicker
             mouse_event(MOUSEEVENTF_LEFTUP, (uint)position.X, (uint)position.Y, 0, 0);
         }
 
+        public static void LeftDown()
+        {
+            Point point = GetPosition();
+            mouse_event(MOUSEEVENTF_LEFTDOWN, (uint)point.X, (uint)point.Y, 0, 0);
+        }
+
+        public static void LeftUp()
+        {
+            Point point = GetPosition();
+            mouse_event(MOUSEEVENTF_LEFTUP, (uint)point.X, (uint)point.Y, 0, 0);
+        }
+
         public static void RightClick()
         {
             Point point = GetPosition();
@@ -66,6 +78,18 @@ namespace AdvancedClicker
             SetCursorPos(position.X, position.Y);
             mouse_event(MOUSEEVENTF_RIGHTDOWN, (uint)position.X, (uint)position.Y, 0, 0);
             mouse_event(MOUSEEVENTF_RIGHTUP, (uint)position.X, (uint)position.Y, 0, 0);
+        }
+
+        public static void RightDown()
+        {
+            Point point = GetPosition();
+            mouse_event(MOUSEEVENTF_RIGHTDOWN, (uint)point.X, (uint)point.Y, 0, 0);
+        }
+
+        public static void RightUp()
+        {
+            Point point = GetPosition();
+            mouse_event(MOUSEEVENTF_RIGHTUP, (uint)point.X, (uint)point.Y, 0, 0);
         }
 
         public static void MiddleClick()
@@ -82,5 +106,16 @@ namespace AdvancedClicker
             mouse_event(MOUSEEVENTF_MIDDLEUP, (uint)position.X, (uint)position.Y, 0, 0);
         }
 
+        public static void MiddleDown()
+        {
+            Point point = GetPosition();
+            mouse_event(MOUSEEVENTF_MIDDLEDOWN, (uint)point.X, (uint)point.Y, 0, 0);
+        }
+
+        public static void MiddleUp()
+        {
+            Point point = GetPosition();
+            mouse_event(MOUSEEVENTF_MIDDLEUP, (uint)point.X, (uint)point.Y, 0, 0);
+        }
     }
 }

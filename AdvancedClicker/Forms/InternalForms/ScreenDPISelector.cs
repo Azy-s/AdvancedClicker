@@ -198,7 +198,6 @@ namespace AdvancedClicker.Forms.InternalForms
             listBox1.Items.Clear();
             Points.Clear();
             pictureBox1.Image = new Bitmap(_image);
-            toolTip1.Show("aaaaa", this, customPointsCheckbox.Location);
         }
 
         private void ScreenDPISelector_Resize(object sender, EventArgs e)

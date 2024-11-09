@@ -23,6 +23,17 @@ namespace AdvancedClicker.Forms
             InitializeComponent();
             Result = Color.FromArgb(0, 0, 0);
             pictureBox1.MouseWheel += pictureBox1_MouseWheel;
+            if (Data.GlobalVariables.ImagePath == null)
+            {
+                Bitmap bmp = new Bitmap(1, 1);
+                pictureBox1.Image = bmp;
+            }
+            else
+            {
+                pictureBox1.Image = new Bitmap(Data.GlobalVariables.ImagePath);
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                _zoomFactor = Math.Min((float)(pictureBox1.Width) / pictureBox1.Image.Width, (float)(pictureBox1.Height) / pictureBox1.Image.Height);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,6 +47,7 @@ namespace AdvancedClicker.Forms
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     // Загружаем изображение в PictureBox
+                    Data.GlobalVariables.ImagePath = openFileDialog.FileName;
                     pictureBox1.Image = new Bitmap(openFileDialog.FileName);
                     pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
                     _zoomFactor = Math.Min((float)(pictureBox1.Width) / pictureBox1.Image.Width, (float)(pictureBox1.Height) / pictureBox1.Image.Height);
@@ -104,7 +116,6 @@ namespace AdvancedClicker.Forms
         private void PickColorFromImage_FormClosing(object sender, FormClosingEventArgs e)
         {
             pictureBox1.Image.Dispose();
-            pictureBox1.Dispose();
             this.Dispose();
         }
     }

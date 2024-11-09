@@ -33,8 +33,10 @@
             smoothnessLabel = new Label();
             roundTrackBar1 = new RoundTrackBar();
             smoothnessValue = new Label();
-            mobileCheckBox1 = new CustomModules.MobileCheckBox();
+            aimModeCheckbox = new CustomModules.MobileCheckBox();
             label1 = new Label();
+            label2 = new Label();
+            isColorInCenterCheckBox = new CustomModules.MobileCheckBox();
             ((System.ComponentModel.ISupportInitialize)roundTrackBar1).BeginInit();
             SuspendLayout();
             // 
@@ -94,37 +96,69 @@
             smoothnessValue.TabIndex = 25;
             smoothnessValue.Text = "1.0";
             // 
-            // mobileCheckBox1
+            // aimModeCheckbox
             // 
-            mobileCheckBox1.Appearance = Appearance.Button;
-            mobileCheckBox1.AutoSize = true;
-            mobileCheckBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            mobileCheckBox1.Checked = true;
-            mobileCheckBox1.CheckState = CheckState.Checked;
-            mobileCheckBox1.FlatAppearance.BorderSize = 0;
-            mobileCheckBox1.FlatAppearance.CheckedBackColor = Color.FromArgb(82, 82, 82);
-            mobileCheckBox1.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 82, 82);
-            mobileCheckBox1.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 82, 82);
-            mobileCheckBox1.FlatStyle = FlatStyle.Flat;
-            mobileCheckBox1.ForeColor = Color.White;
-            mobileCheckBox1.Image = (Image)resources.GetObject("mobileCheckBox1.Image");
-            mobileCheckBox1.Location = new Point(388, 19);
-            mobileCheckBox1.Name = "mobileCheckBox1";
-            mobileCheckBox1.Size = new Size(50, 28);
-            mobileCheckBox1.TabIndex = 9;
-            mobileCheckBox1.UseVisualStyleBackColor = true;
-            mobileCheckBox1.CheckedChanged += mobileCheckBox1_CheckedChanged;
+            aimModeCheckbox.Appearance = Appearance.Button;
+            aimModeCheckbox.AutoSize = true;
+            aimModeCheckbox.BackgroundImageLayout = ImageLayout.Stretch;
+            aimModeCheckbox.Checked = true;
+            aimModeCheckbox.CheckState = CheckState.Checked;
+            aimModeCheckbox.FlatAppearance.BorderSize = 0;
+            aimModeCheckbox.FlatAppearance.CheckedBackColor = Color.FromArgb(82, 82, 82);
+            aimModeCheckbox.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 82, 82);
+            aimModeCheckbox.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 82, 82);
+            aimModeCheckbox.FlatStyle = FlatStyle.Flat;
+            aimModeCheckbox.ForeColor = Color.White;
+            aimModeCheckbox.Image = (Image)resources.GetObject("aimModeCheckbox.Image");
+            aimModeCheckbox.Location = new Point(388, 2);
+            aimModeCheckbox.Name = "aimModeCheckbox";
+            aimModeCheckbox.Size = new Size(50, 28);
+            aimModeCheckbox.TabIndex = 9;
+            aimModeCheckbox.UseVisualStyleBackColor = true;
+            aimModeCheckbox.CheckedChanged += mobileCheckBox1_CheckedChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             label1.ForeColor = SystemColors.Control;
-            label1.Location = new Point(205, 22);
+            label1.Location = new Point(205, 5);
             label1.Name = "label1";
             label1.Size = new Size(91, 20);
             label1.TabIndex = 23;
             label1.Text = "Аим режим";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label2.ForeColor = SystemColors.Control;
+            label2.Location = new Point(205, 39);
+            label2.Name = "label2";
+            label2.Size = new Size(186, 20);
+            label2.TabIndex = 23;
+            label2.Text = "Проверка цвета в центре";
+            // 
+            // isColorInCenterCheckBox
+            // 
+            isColorInCenterCheckBox.Appearance = Appearance.Button;
+            isColorInCenterCheckBox.AutoSize = true;
+            isColorInCenterCheckBox.BackgroundImageLayout = ImageLayout.Stretch;
+            isColorInCenterCheckBox.Checked = true;
+            isColorInCenterCheckBox.CheckState = CheckState.Checked;
+            isColorInCenterCheckBox.FlatAppearance.BorderSize = 0;
+            isColorInCenterCheckBox.FlatAppearance.CheckedBackColor = Color.FromArgb(82, 82, 82);
+            isColorInCenterCheckBox.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 82, 82);
+            isColorInCenterCheckBox.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 82, 82);
+            isColorInCenterCheckBox.FlatStyle = FlatStyle.Flat;
+            isColorInCenterCheckBox.ForeColor = Color.White;
+            isColorInCenterCheckBox.Image = (Image)resources.GetObject("isColorInCenterCheckBox.Image");
+            isColorInCenterCheckBox.Location = new Point(388, 36);
+            isColorInCenterCheckBox.Name = "isColorInCenterCheckBox";
+            isColorInCenterCheckBox.Size = new Size(50, 28);
+            isColorInCenterCheckBox.TabIndex = 9;
+            isColorInCenterCheckBox.UseVisualStyleBackColor = true;
+            isColorInCenterCheckBox.CheckedChanged += mobileCheckBox1_CheckedChanged;
             // 
             // MouseCursorOption
             // 
@@ -133,8 +167,10 @@
             BackColor = Color.FromArgb(82, 82, 82);
             ClientSize = new Size(450, 110);
             ControlBox = false;
-            Controls.Add(mobileCheckBox1);
+            Controls.Add(isColorInCenterCheckBox);
+            Controls.Add(aimModeCheckbox);
             Controls.Add(smoothnessValue);
+            Controls.Add(label2);
             Controls.Add(roundTrackBar1);
             Controls.Add(label1);
             Controls.Add(smoothnessLabel);
@@ -152,7 +188,9 @@
         private Label smoothnessLabel;
         private RoundTrackBar roundTrackBar1;
         private Label smoothnessValue;
-        private CustomModules.MobileCheckBox mobileCheckBox1;
+        private CustomModules.MobileCheckBox aimModeCheckbox;
         private Label label1;
+        private Label label2;
+        private CustomModules.MobileCheckBox isColorInCenterCheckBox;
     }
 }

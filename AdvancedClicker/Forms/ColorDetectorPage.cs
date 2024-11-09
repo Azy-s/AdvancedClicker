@@ -43,6 +43,7 @@ namespace AdvancedClicker.Forms
             ctsDetection = new CancellationTokenSource();
             RegisterHotKey();
             PointsToSearch.Add(new Point(0, 0));
+            comboBox2.SelectedIndex = 1;
         }
 
 
@@ -192,7 +193,7 @@ namespace AdvancedClicker.Forms
             cdData.SolidColors = _pickSolidColor.GetColors();
             cdData.IsSolidColor = _pickSolidColor.Enabled;
             cdData.IsGradient = _pickGradienColor.Enabled;
-            cdData.Offset = _pickGradienColor.Enabled ? _pickGradienColor.ColorOffset : _pickSolidColor.ColorOffset;
+            cdData.ColorOffset = _pickGradienColor.Enabled ? _pickGradienColor.ColorOffset : _pickSolidColor.ColorOffset;
             cdData.Points = PointsToSearch;
             cdData.AreaWidth = ScreenArea.X;
             cdData.AreaHeight = ScreenArea.Y;
@@ -201,6 +202,13 @@ namespace AdvancedClicker.Forms
             cdData.MouseButton = Data.MouseButton.Left;
             cdData.FolowMouseCursor = mouseCursorRadioButton.Checked;
             cdData.Smoothness = Smoothness;
+            cdData.IsAimMode = _mouseCursorOption.IsAimMode();
+            cdData.MouseButton = (Data.MouseButton)comboBox2.SelectedIndex;
+            cdData.DelayAfterClick = delayAfterCLick.GetNumber();
+            cdData.RandomDelayAfterCLick = randomDelayAfterClick.GetNumber();
+            cdData.HoldButtonTime = holdButtonTime.GetNumber();
+            cdData.RandomHoldButtonTime = randomHoldButtonTime.GetNumber();
+            cdData.IsColorInCenter = _mouseCursorOption.IsColorInCenter();
 
             startButton.Enabled = false;
             stopButton.Enabled = true;

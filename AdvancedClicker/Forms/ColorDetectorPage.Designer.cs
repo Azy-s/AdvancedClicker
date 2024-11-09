@@ -46,12 +46,16 @@
             delayedStartCheckBox = new CheckBox();
             label3 = new Label();
             groupBox2 = new GroupBox();
+            label13 = new Label();
             comboBox2 = new ComboBox();
-            numericTextBox3 = new CustomModules.NumericTextBox();
-            numericTextBox2 = new CustomModules.NumericTextBox();
+            randomDelayAfterClick = new CustomModules.NumericTextBox();
+            randomHoldButtonTime = new CustomModules.NumericTextBox();
+            label12 = new Label();
+            holdButtonTime = new CustomModules.NumericTextBox();
             label9 = new Label();
-            numericTextBox1 = new CustomModules.NumericTextBox();
+            delayAfterCLick = new CustomModules.NumericTextBox();
             label7 = new Label();
+            label11 = new Label();
             label10 = new Label();
             label8 = new Label();
             label5 = new Label();
@@ -291,12 +295,16 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label13);
             groupBox2.Controls.Add(comboBox2);
-            groupBox2.Controls.Add(numericTextBox3);
-            groupBox2.Controls.Add(numericTextBox2);
+            groupBox2.Controls.Add(randomDelayAfterClick);
+            groupBox2.Controls.Add(randomHoldButtonTime);
+            groupBox2.Controls.Add(label12);
+            groupBox2.Controls.Add(holdButtonTime);
             groupBox2.Controls.Add(label9);
-            groupBox2.Controls.Add(numericTextBox1);
+            groupBox2.Controls.Add(delayAfterCLick);
             groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(label11);
             groupBox2.Controls.Add(label10);
             groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(label5);
@@ -308,6 +316,17 @@
             groupBox2.TabIndex = 15;
             groupBox2.TabStop = false;
             // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 11F);
+            label13.ForeColor = SystemColors.Control;
+            label13.Location = new Point(56, 19);
+            label13.Name = "label13";
+            label13.Size = new Size(127, 20);
+            label13.TabIndex = 13;
+            label13.Text = "Настройки клика";
+            // 
             // comboBox2
             // 
             comboBox2.BackColor = Color.FromArgb(82, 82, 82);
@@ -315,73 +334,107 @@
             comboBox2.FlatStyle = FlatStyle.Flat;
             comboBox2.ForeColor = SystemColors.Control;
             comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "None", "Mouse Left", "Mouse Right", "Mouse Middle", "Mouse4", "Mouse5", "Scroll Up", "Scroll Down" });
+            comboBox2.Items.AddRange(new object[] { "None", "Mouse Left", "Mouse Right", "Mouse Middle", "Scroll Up", "Scroll Down" });
             comboBox2.Location = new Point(122, 242);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(112, 23);
             comboBox2.TabIndex = 12;
             // 
-            // numericTextBox3
+            // randomDelayAfterClick
             // 
-            numericTextBox3.BackColor = Color.FromArgb(68, 68, 68);
-            numericTextBox3.BorderStyle = BorderStyle.FixedSingle;
-            numericTextBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            numericTextBox3.ForeColor = Color.White;
-            numericTextBox3.Location = new Point(144, 78);
-            numericTextBox3.MaxLength = 5;
-            numericTextBox3.Name = "numericTextBox3";
-            numericTextBox3.Size = new Size(66, 23);
-            numericTextBox3.TabIndex = 11;
-            numericTextBox3.Text = "50";
-            numericTextBox3.TextAlign = HorizontalAlignment.Center;
+            randomDelayAfterClick.BackColor = Color.FromArgb(68, 68, 68);
+            randomDelayAfterClick.BorderStyle = BorderStyle.FixedSingle;
+            randomDelayAfterClick.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            randomDelayAfterClick.ForeColor = Color.White;
+            randomDelayAfterClick.Location = new Point(144, 78);
+            randomDelayAfterClick.MaxLength = 5;
+            randomDelayAfterClick.Name = "randomDelayAfterClick";
+            randomDelayAfterClick.Size = new Size(66, 23);
+            randomDelayAfterClick.TabIndex = 11;
+            randomDelayAfterClick.Text = "0";
+            randomDelayAfterClick.TextAlign = HorizontalAlignment.Center;
             // 
-            // numericTextBox2
+            // randomHoldButtonTime
             // 
-            numericTextBox2.BackColor = Color.FromArgb(68, 68, 68);
-            numericTextBox2.BorderStyle = BorderStyle.FixedSingle;
-            numericTextBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            numericTextBox2.ForeColor = Color.White;
-            numericTextBox2.Location = new Point(144, 49);
-            numericTextBox2.MaxLength = 5;
-            numericTextBox2.Name = "numericTextBox2";
-            numericTextBox2.Size = new Size(66, 23);
-            numericTextBox2.TabIndex = 11;
-            numericTextBox2.Text = "30";
-            numericTextBox2.TextAlign = HorizontalAlignment.Center;
+            randomHoldButtonTime.BackColor = Color.FromArgb(68, 68, 68);
+            randomHoldButtonTime.BorderStyle = BorderStyle.FixedSingle;
+            randomHoldButtonTime.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            randomHoldButtonTime.ForeColor = Color.White;
+            randomHoldButtonTime.Location = new Point(144, 136);
+            randomHoldButtonTime.MaxLength = 5;
+            randomHoldButtonTime.Name = "randomHoldButtonTime";
+            randomHoldButtonTime.Size = new Size(66, 23);
+            randomHoldButtonTime.TabIndex = 11;
+            randomHoldButtonTime.Text = "0";
+            randomHoldButtonTime.TextAlign = HorizontalAlignment.Center;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.ForeColor = SystemColors.Control;
+            label12.Location = new Point(212, 81);
+            label12.Name = "label12";
+            label12.Size = new Size(22, 15);
+            label12.TabIndex = 10;
+            label12.Text = "мс";
+            // 
+            // holdButtonTime
+            // 
+            holdButtonTime.BackColor = Color.FromArgb(68, 68, 68);
+            holdButtonTime.BorderStyle = BorderStyle.FixedSingle;
+            holdButtonTime.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            holdButtonTime.ForeColor = Color.White;
+            holdButtonTime.Location = new Point(144, 107);
+            holdButtonTime.MaxLength = 5;
+            holdButtonTime.Name = "holdButtonTime";
+            holdButtonTime.Size = new Size(66, 23);
+            holdButtonTime.TabIndex = 11;
+            holdButtonTime.Text = "0";
+            holdButtonTime.TextAlign = HorizontalAlignment.Center;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.ForeColor = SystemColors.Control;
-            label9.Location = new Point(212, 81);
+            label9.Location = new Point(212, 139);
             label9.Name = "label9";
             label9.Size = new Size(22, 15);
             label9.TabIndex = 10;
             label9.Text = "мс";
             // 
-            // numericTextBox1
+            // delayAfterCLick
             // 
-            numericTextBox1.BackColor = Color.FromArgb(68, 68, 68);
-            numericTextBox1.BorderStyle = BorderStyle.FixedSingle;
-            numericTextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            numericTextBox1.ForeColor = Color.White;
-            numericTextBox1.Location = new Point(144, 21);
-            numericTextBox1.MaxLength = 5;
-            numericTextBox1.Name = "numericTextBox1";
-            numericTextBox1.Size = new Size(66, 23);
-            numericTextBox1.TabIndex = 11;
-            numericTextBox1.Text = "10";
-            numericTextBox1.TextAlign = HorizontalAlignment.Center;
+            delayAfterCLick.BackColor = Color.FromArgb(68, 68, 68);
+            delayAfterCLick.BorderStyle = BorderStyle.FixedSingle;
+            delayAfterCLick.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            delayAfterCLick.ForeColor = Color.White;
+            delayAfterCLick.Location = new Point(144, 50);
+            delayAfterCLick.MaxLength = 5;
+            delayAfterCLick.Name = "delayAfterCLick";
+            delayAfterCLick.Size = new Size(66, 23);
+            delayAfterCLick.TabIndex = 11;
+            delayAfterCLick.Text = "0";
+            delayAfterCLick.TextAlign = HorizontalAlignment.Center;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.ForeColor = SystemColors.Control;
-            label7.Location = new Point(212, 52);
+            label7.Location = new Point(212, 110);
             label7.Name = "label7";
             label7.Size = new Size(22, 15);
             label7.TabIndex = 10;
             label7.Text = "мс";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.ForeColor = SystemColors.Control;
+            label11.Location = new Point(6, 81);
+            label11.Name = "label11";
+            label11.Size = new Size(92, 15);
+            label11.TabIndex = 10;
+            label11.Text = "Случ. задержка";
             // 
             // label10
             // 
@@ -397,7 +450,7 @@
             // 
             label8.AutoSize = true;
             label8.ForeColor = SystemColors.Control;
-            label8.Location = new Point(6, 81);
+            label8.Location = new Point(6, 139);
             label8.Name = "label8";
             label8.Size = new Size(122, 15);
             label8.TabIndex = 10;
@@ -407,7 +460,7 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = SystemColors.Control;
-            label5.Location = new Point(212, 24);
+            label5.Location = new Point(212, 53);
             label5.Name = "label5";
             label5.Size = new Size(22, 15);
             label5.TabIndex = 10;
@@ -417,7 +470,7 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = SystemColors.Control;
-            label6.Location = new Point(6, 52);
+            label6.Location = new Point(6, 110);
             label6.Name = "label6";
             label6.Size = new Size(132, 15);
             label6.TabIndex = 10;
@@ -427,7 +480,7 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = SystemColors.Control;
-            label4.Location = new Point(6, 24);
+            label4.Location = new Point(6, 53);
             label4.Name = "label4";
             label4.Size = new Size(131, 15);
             label4.TabIndex = 10;
@@ -484,14 +537,18 @@
         private GroupBox groupBox2;
         private Label label4;
         private Label label5;
-        private CustomModules.NumericTextBox numericTextBox1;
-        private CustomModules.NumericTextBox numericTextBox3;
-        private CustomModules.NumericTextBox numericTextBox2;
+        private CustomModules.NumericTextBox delayAfterCLick;
+        private CustomModules.NumericTextBox randomHoldButtonTime;
+        private CustomModules.NumericTextBox holdButtonTime;
         private Label label9;
         private Label label7;
         private Label label8;
         private Label label6;
         private ComboBox comboBox2;
         private Label label10;
+        private CustomModules.NumericTextBox randomDelayAfterClick;
+        private Label label12;
+        private Label label11;
+        private Label label13;
     }
 }

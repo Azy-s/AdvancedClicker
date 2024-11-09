@@ -20,6 +20,16 @@ namespace AdvancedClicker.Forms.InternalForms
             _mainForm = mainForm;
         }
 
+        public bool IsAimMode()
+        {
+            return aimModeCheckbox.Checked;
+        }
+
+        public bool IsColorInCenter()
+        {
+            return isColorInCenterCheckBox.Checked;
+        }
+
         private void chooseRadiusButton_Click(object sender, EventArgs e)
         {
             using (MouseRadiusSelector mouseRadiusSelector = new MouseRadiusSelector())
@@ -43,9 +53,9 @@ namespace AdvancedClicker.Forms.InternalForms
 
         private void mobileCheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            roundTrackBar1.Enabled = mobileCheckBox1.Checked;
-            smoothnessLabel.Enabled = mobileCheckBox1.Checked;
-            smoothnessValue.Enabled = mobileCheckBox1.Checked;
+            roundTrackBar1.Enabled = aimModeCheckbox.Checked;
+            smoothnessLabel.Enabled = aimModeCheckbox.Checked;
+            smoothnessValue.Enabled = aimModeCheckbox.Checked;
         }
 
         private void roundTrackBar1_EnabledChanged(object sender, EventArgs e)
