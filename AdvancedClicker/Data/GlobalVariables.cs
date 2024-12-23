@@ -2,6 +2,6 @@
 {
     public static class GlobalVariables
     {
-        public static string ImagePath;
+        public static string? ImagePath;
     }
 }

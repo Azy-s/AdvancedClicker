@@ -4,6 +4,7 @@ using AdvancedClicker.Forms.InternalForms;
 using AdvancedClicker.Properties;
 using System.Diagnostics;
 using System.Drawing;
+using System.Media;
 using WindowsInput;
 
 namespace AdvancedClicker.Forms
@@ -32,7 +33,7 @@ namespace AdvancedClicker.Forms
         public ColorDetectorPage()
         {
             InitializeComponent();
-            
+
             _screenAreaOption = new ScreenAreaOption(this);
             _mouseCursorOption = new MouseCursorOption(this);
             mouseCursorRadioButton.CheckedChanged += radioButton_StateChanged;
@@ -126,7 +127,7 @@ namespace AdvancedClicker.Forms
             _gradientColor2 = _pickGradienColor.GradientColor2;
             //await Task.Run(() => PixelCapture(cts.Token, this, _gradientColor1, _gradientColor2), cts.Token);
         }
-        
+
 
         private async void button4_Click(object sender, EventArgs e)
         {
@@ -199,16 +200,25 @@ namespace AdvancedClicker.Forms
             cdData.AreaHeight = ScreenArea.Y;
             cdData.ScreenPosX = ScreenCoords.X;
             cdData.ScreenPosY = ScreenCoords.Y;
-            cdData.MouseButton = Data.MouseButton.Left;
+            cdData.MouseButton = MouseButtons.Left;
             cdData.FolowMouseCursor = mouseCursorRadioButton.Checked;
             cdData.Smoothness = Smoothness;
             cdData.IsAimMode = _mouseCursorOption.IsAimMode();
-            cdData.MouseButton = (Data.MouseButton)comboBox2.SelectedIndex;
+            cdData.MouseButton = (MouseButtons)comboBox2.SelectedIndex;
             cdData.DelayAfterClick = delayAfterCLick.GetNumber();
             cdData.RandomDelayAfterCLick = randomDelayAfterClick.GetNumber();
             cdData.HoldButtonTime = holdButtonTime.GetNumber();
             cdData.RandomHoldButtonTime = randomHoldButtonTime.GetNumber();
             cdData.IsColorInCenter = _mouseCursorOption.IsColorInCenter();
+
+            if (ScreenArea.X == 0 || ScreenArea.Y == 0)
+            {
+                SystemSounds.Exclamation.Play();
+                return;
+            }
+
+            if (delayedStartCheckBox.Checked)
+                await Task.Delay(1000 * delayedStartTextBox.GetNumber());
 
             startButton.Enabled = false;
             stopButton.Enabled = true;
@@ -250,6 +260,11 @@ namespace AdvancedClicker.Forms
                 if (!ctsDetection.IsCancellationRequested)
                     ctsDetection.Cancel();
             }
+        }
+
+        private void mobileCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            delayedStartTextBox.Enabled = delayedStartCheckBox.Checked;
         }
     }
 }

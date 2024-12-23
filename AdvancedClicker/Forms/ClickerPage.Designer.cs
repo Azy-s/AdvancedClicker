@@ -74,13 +74,13 @@
             mouseButtonComboBox = new ComboBox();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            editClickPointButton = new Button();
+            deleteClickPointButton = new Button();
+            addClickPointButton = new Button();
+            listBox1 = new ListBox();
             customCoordCheckBox = new CheckBox();
-            labelMouseCoords = new Label();
             label1 = new Label();
             coordHint = new PictureBox();
-            xCordTextbox = new TextBox();
-            yCordTextbox = new TextBox();
-            trackMouseBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             testClickButton = new Button();
             labelClicksCounter = new Label();
             cpsLabel = new Label();
@@ -173,6 +173,7 @@
             delayMilisecondsTextBox.TabIndex = 8;
             delayMilisecondsTextBox.Text = "50";
             delayMilisecondsTextBox.TextAlign = HorizontalAlignment.Center;
+            toolTip1.SetToolTip(delayMilisecondsTextBox, "Слишком низкие значения\r\nмогут сломать некоторые программы,\r\nв том числе эту.");
             delayMilisecondsTextBox.KeyPress += delayMilisecondsTextBox_KeyPress;
             // 
             // randomDelayCheckBox
@@ -700,7 +701,7 @@
             mouseButtonComboBox.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             mouseButtonComboBox.ForeColor = Color.White;
             mouseButtonComboBox.FormattingEnabled = true;
-            mouseButtonComboBox.Items.AddRange(new object[] { "Left", "Right", "Middle" });
+            mouseButtonComboBox.Items.AddRange(new object[] { "None", "Left", "Right", "Middle" });
             mouseButtonComboBox.Location = new Point(115, 62);
             mouseButtonComboBox.Name = "mouseButtonComboBox";
             mouseButtonComboBox.Size = new Size(121, 28);
@@ -749,20 +750,96 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(editClickPointButton);
+            groupBox2.Controls.Add(deleteClickPointButton);
+            groupBox2.Controls.Add(addClickPointButton);
+            groupBox2.Controls.Add(listBox1);
             groupBox2.Controls.Add(mouseButtonComboBox);
             groupBox2.Controls.Add(customCoordCheckBox);
             groupBox2.Controls.Add(labelMouseButton);
-            groupBox2.Controls.Add(labelMouseCoords);
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(coordHint);
-            groupBox2.Controls.Add(xCordTextbox);
-            groupBox2.Controls.Add(yCordTextbox);
             groupBox2.FlatStyle = FlatStyle.Flat;
             groupBox2.Location = new Point(0, 224);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(493, 177);
             groupBox2.TabIndex = 16;
             groupBox2.TabStop = false;
+            // 
+            // editClickPointButton
+            // 
+            editClickPointButton.BackColor = Color.FromArgb(65, 65, 65);
+            editClickPointButton.BackgroundImage = Properties.Resources.edit_disabled_icon;
+            editClickPointButton.BackgroundImageLayout = ImageLayout.Zoom;
+            editClickPointButton.Enabled = false;
+            editClickPointButton.FlatAppearance.BorderColor = Color.DimGray;
+            editClickPointButton.FlatAppearance.MouseDownBackColor = SystemColors.ScrollBar;
+            editClickPointButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(49, 49, 49);
+            editClickPointButton.FlatStyle = FlatStyle.Flat;
+            editClickPointButton.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            editClickPointButton.ForeColor = Color.White;
+            editClickPointButton.Location = new Point(300, 92);
+            editClickPointButton.Name = "editClickPointButton";
+            editClickPointButton.Size = new Size(32, 32);
+            editClickPointButton.TabIndex = 18;
+            editClickPointButton.UseVisualStyleBackColor = false;
+            editClickPointButton.Click += editClickPointButton_Click;
+            // 
+            // deleteClickPointButton
+            // 
+            deleteClickPointButton.BackColor = Color.FromArgb(65, 65, 65);
+            deleteClickPointButton.BackgroundImage = Properties.Resources.close_window_disabled_icon;
+            deleteClickPointButton.BackgroundImageLayout = ImageLayout.Zoom;
+            deleteClickPointButton.Enabled = false;
+            deleteClickPointButton.FlatAppearance.BorderColor = Color.DimGray;
+            deleteClickPointButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(202, 62, 71);
+            deleteClickPointButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(49, 49, 49);
+            deleteClickPointButton.FlatStyle = FlatStyle.Flat;
+            deleteClickPointButton.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            deleteClickPointButton.ForeColor = Color.White;
+            deleteClickPointButton.Location = new Point(300, 53);
+            deleteClickPointButton.Name = "deleteClickPointButton";
+            deleteClickPointButton.Size = new Size(32, 32);
+            deleteClickPointButton.TabIndex = 18;
+            deleteClickPointButton.UseVisualStyleBackColor = false;
+            deleteClickPointButton.Click += deleteClickPointButton_Click;
+            // 
+            // addClickPointButton
+            // 
+            addClickPointButton.BackColor = Color.FromArgb(65, 65, 65);
+            addClickPointButton.BackgroundImage = Properties.Resources.add_disabled_icon;
+            addClickPointButton.BackgroundImageLayout = ImageLayout.Zoom;
+            addClickPointButton.Enabled = false;
+            addClickPointButton.FlatAppearance.BorderColor = Color.DimGray;
+            addClickPointButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 200, 50);
+            addClickPointButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(49, 49, 49);
+            addClickPointButton.FlatStyle = FlatStyle.Flat;
+            addClickPointButton.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            addClickPointButton.ForeColor = Color.White;
+            addClickPointButton.Location = new Point(300, 15);
+            addClickPointButton.Name = "addClickPointButton";
+            addClickPointButton.Size = new Size(32, 32);
+            addClickPointButton.TabIndex = 18;
+            addClickPointButton.UseVisualStyleBackColor = false;
+            addClickPointButton.Click += addClickPointButton_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.AllowDrop = true;
+            listBox1.BackColor = Color.FromArgb(65, 65, 65);
+            listBox1.BorderStyle = BorderStyle.FixedSingle;
+            listBox1.Enabled = false;
+            listBox1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            listBox1.ForeColor = SystemColors.Control;
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 17;
+            listBox1.Location = new Point(338, 15);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(150, 155);
+            listBox1.TabIndex = 15;
+            listBox1.DoubleClick += listBox1_DoubleClick;
+            listBox1.MouseDown += listBox1_MouseDown;
+            listBox1.MouseUp += listBox1_MouseUp;
             // 
             // customCoordCheckBox
             // 
@@ -783,17 +860,6 @@
             customCoordCheckBox.UseVisualStyleBackColor = true;
             customCoordCheckBox.CheckedChanged += checkBox_CheckedChanged;
             customCoordCheckBox.CheckStateChanged += customCoordCheckBox_CheckStateChanged;
-            // 
-            // labelMouseCoords
-            // 
-            labelMouseCoords.AutoSize = true;
-            labelMouseCoords.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelMouseCoords.ForeColor = Color.White;
-            labelMouseCoords.Location = new Point(360, 26);
-            labelMouseCoords.Name = "labelMouseCoords";
-            labelMouseCoords.Size = new Size(65, 18);
-            labelMouseCoords.TabIndex = 3;
-            labelMouseCoords.Text = "x: 0 y: 0";
             // 
             // label1
             // 
@@ -816,47 +882,6 @@
             coordHint.Size = new Size(20, 20);
             coordHint.TabIndex = 11;
             coordHint.TabStop = false;
-            // 
-            // xCordTextbox
-            // 
-            xCordTextbox.BackColor = Color.FromArgb(68, 68, 68);
-            xCordTextbox.BorderStyle = BorderStyle.FixedSingle;
-            xCordTextbox.Cursor = Cursors.IBeam;
-            xCordTextbox.Enabled = false;
-            xCordTextbox.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            xCordTextbox.ForeColor = Color.White;
-            xCordTextbox.Location = new Point(252, 23);
-            xCordTextbox.MaxLength = 4;
-            xCordTextbox.Name = "xCordTextbox";
-            xCordTextbox.Size = new Size(51, 27);
-            xCordTextbox.TabIndex = 8;
-            xCordTextbox.Text = "0";
-            xCordTextbox.TextAlign = HorizontalAlignment.Center;
-            xCordTextbox.KeyPress += NumberCheck;
-            // 
-            // yCordTextbox
-            // 
-            yCordTextbox.BackColor = Color.FromArgb(68, 68, 68);
-            yCordTextbox.BorderStyle = BorderStyle.FixedSingle;
-            yCordTextbox.Cursor = Cursors.IBeam;
-            yCordTextbox.Enabled = false;
-            yCordTextbox.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            yCordTextbox.ForeColor = Color.White;
-            yCordTextbox.Location = new Point(303, 23);
-            yCordTextbox.MaxLength = 4;
-            yCordTextbox.Name = "yCordTextbox";
-            yCordTextbox.Size = new Size(51, 27);
-            yCordTextbox.TabIndex = 8;
-            yCordTextbox.Text = "0";
-            yCordTextbox.TextAlign = HorizontalAlignment.Center;
-            yCordTextbox.KeyPress += NumberCheck;
-            // 
-            // trackMouseBackgroundWorker
-            // 
-            trackMouseBackgroundWorker.WorkerReportsProgress = true;
-            trackMouseBackgroundWorker.WorkerSupportsCancellation = true;
-            trackMouseBackgroundWorker.DoWork += TrackMouseCoordinates;
-            trackMouseBackgroundWorker.ProgressChanged += UpdateCoordinates;
             // 
             // testClickButton
             // 
@@ -1040,10 +1065,6 @@
         private CheckBox customCoordCheckBox;
         private Label label1;
         private PictureBox coordHint;
-        private TextBox xCordTextbox;
-        private TextBox yCordTextbox;
-        private Label labelMouseCoords;
-        private System.ComponentModel.BackgroundWorker trackMouseBackgroundWorker;
         private Button testClickButton;
         private Label labelClicksCounter;
         private Label cpsLabel;
@@ -1052,5 +1073,9 @@
         private Label labelTimeToTest;
         private Button resetTestButton;
         private Label labelTimeSeconds;
+        private ListBox listBox1;
+        private Button editClickPointButton;
+        private Button deleteClickPointButton;
+        private Button addClickPointButton;
     }
 }

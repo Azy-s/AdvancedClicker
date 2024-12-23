@@ -8,7 +8,7 @@ namespace AdvancedClicker.CustomModules
     {
         public NumericTextBox() 
         {
-            BackColor = Color.FromArgb(68, 68, 68);
+            BackColor = ThemeColors.SecondaryColor1;
             BorderStyle = BorderStyle.FixedSingle;
             Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             ForeColor = Color.White;

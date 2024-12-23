@@ -1,4 +1,6 @@
-﻿namespace AdvancedClicker.Forms.InternalForms
+﻿using AdvancedClicker.CustomModules;
+
+namespace AdvancedClicker.Forms.InternalForms
 {
     public partial class ScreenAreaOption : Form
     {
@@ -36,7 +38,7 @@
                 xPositionTextBox.Text = data.X.ToString();
                 yPositionTextBox.Text = data.Y.ToString();
                 widthTextBox.Text = data.Width.ToString();
-                HeightTextBox.Text = data.Height.ToString();
+                heightTextBox.Text = data.Height.ToString();
                 ScreenPosX = data.X;
                 ScreenPosY = data.Y;
                 screenWidth = data.Width;
@@ -82,6 +84,14 @@
             }
 
             screenDPI.Dispose();
+        }
+
+        private void AreaTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (((NumericTextBox)sender).GetNumber() == 0)
+                ((NumericTextBox)sender).BackColor = Color.DarkRed;
+            else
+                ((NumericTextBox)sender).BackColor = ThemeColors.SecondaryColor1;
         }
     }
 }

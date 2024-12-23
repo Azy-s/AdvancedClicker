@@ -1,9 +1,10 @@
 ﻿using AdvancedClicker.Data;
+using AdvancedClicker.Forms.InternalForms;
 using AdvancedClicker.Properties;
-using Microsoft.VisualBasic;
 using System.ComponentModel;
 using System.Diagnostics;
-using static System.Net.Mime.MediaTypeNames;
+using Windows.ApplicationModel.Background;
+using WinRT;
 
 namespace AdvancedClicker.Forms
 {
@@ -23,7 +24,7 @@ namespace AdvancedClicker.Forms
         public ClickerPage()
         {
             InitializeComponent();
-            mouseButtonComboBox.SelectedIndex = 0;
+            mouseButtonComboBox.SelectedIndex = 1;
             timeToTestComboBox.SelectedIndex = 2;
             RegisterHotKey();
         }
@@ -51,7 +52,7 @@ namespace AdvancedClicker.Forms
             labelTimeLimitHours.Enabled = timeLImitCheckbox.Checked;
             labelTimeLimitMinutes.Enabled = timeLImitCheckbox.Checked;
             labelTimeLimitSeconds.Enabled = timeLImitCheckbox.Checked;
-            labelTimeLimitMiliseconds.Enabled= timeLImitCheckbox.Checked;
+            labelTimeLimitMiliseconds.Enabled = timeLImitCheckbox.Checked;
         }
 
         private void clickLimitCheckBox_CheckStateChanged(object sender, EventArgs e)
@@ -67,17 +68,25 @@ namespace AdvancedClicker.Forms
 
         private async void customCoordCheckBox_CheckStateChanged(object sender, EventArgs e)
         {
-            xCordTextbox.Enabled = customCoordCheckBox.Checked;
-            yCordTextbox.Enabled = customCoordCheckBox.Checked;
-            labelMouseCoords.Enabled = customCoordCheckBox.Checked;
+            addClickPointButton.Enabled = customCoordCheckBox.Checked;
+            deleteClickPointButton.Enabled = customCoordCheckBox.Checked;
+            editClickPointButton.Enabled = customCoordCheckBox.Checked;
+            listBox1.Enabled = customCoordCheckBox.Checked;
 
-            if (customCoordCheckBox.Checked && !trackMouseBackgroundWorker.IsBusy)
+            mouseButtonComboBox.Enabled = !customCoordCheckBox.Checked;
+            labelMouseButton.Enabled = !customCoordCheckBox.Checked;
+
+            if (customCoordCheckBox.Checked)
             {
-                trackMouseBackgroundWorker.RunWorkerAsync();
+                addClickPointButton.BackgroundImage = Resources.add_icon;
+                deleteClickPointButton.BackgroundImage = Resources.close_window_red_icon;
+                editClickPointButton.BackgroundImage = Resources.edit_icon_gray;
             }
-            else if (!customCoordCheckBox.Checked && trackMouseBackgroundWorker.IsBusy)
+            else
             {
-                trackMouseBackgroundWorker.CancelAsync();
+                addClickPointButton.BackgroundImage = Resources.add_disabled_icon;
+                deleteClickPointButton.BackgroundImage = Resources.close_window_disabled_icon;
+                editClickPointButton.BackgroundImage = Resources.edit_disabled_icon;
             }
         }
 
@@ -91,7 +100,7 @@ namespace AdvancedClicker.Forms
             int totalMs = miliseconds + seconds * 10 + minutes * 10 + hours * 10; //totally wrong, but for this usage it's works
             if (totalMs < 5)
             {
-                //labelWarningMessage.Visible = true;
+
             }
             else
             {
@@ -142,20 +151,23 @@ namespace AdvancedClicker.Forms
 
             if (customCoordCheckBox.Checked)
             {
-                clickData.MouseCoords = new Point(GetNumberFromTextBox(xCordTextbox), GetNumberFromTextBox(yCordTextbox));
+                //clickData.MouseCoords = new Point(GetNumberFromTextBox(xCordTextbox), GetNumberFromTextBox(yCordTextbox));
                 clickData.IsMouseCoordEnabled = true;
             }
 
             switch (mouseButtonComboBox.SelectedItem)
             {
+                case "None":
+                    clickData.MouseButton = MouseButtons.None;
+                    break;
                 case "Left":
-                    clickData.MouseButton = Data.MouseButton.Left;
+                    clickData.MouseButton = MouseButtons.Left;
                     break;
                 case "Right":
-                    clickData.MouseButton = Data.MouseButton.Right;
+                    clickData.MouseButton = MouseButtons.Right;
                     break;
                 case "Middle":
-                    clickData.MouseButton = Data.MouseButton.Middle;
+                    clickData.MouseButton = MouseButtons.Middle;
                     break;
             }
 
@@ -165,7 +177,7 @@ namespace AdvancedClicker.Forms
             startButton.BackgroundImage = Resources.play_disabled_icon;
             stopButton.BackgroundImage = Resources.stop_icon;
 
-            
+
 
             if (delayedStartCheckBox.Checked)
             {
@@ -192,6 +204,20 @@ namespace AdvancedClicker.Forms
             if (timeLImitCheckbox.Checked)
             {
                 _ctsClicker.CancelAfter(cancelationTime + 5);
+            }
+
+            clickData.ClickPoints = new List<ClickPoint>();
+            foreach (String item in listBox1.Items)
+            {
+                ClickPoint point = new ClickPoint();
+                string[] tempData = item.Split(';');
+                point.MouseCoords = new Point(int.Parse(tempData[0]), int.Parse(tempData[1]));
+                point.MouseButton =
+                    (tempData[2] == "Left") ? MouseButtons.Left :
+                    (tempData[2] == "Right") ? MouseButtons.Right :
+                    (tempData[2] == "Middle") ? MouseButtons.Middle : MouseButtons.None;
+                point.DelayAfterClick = int.Parse(tempData[3]);
+                clickData.ClickPoints.Add(point);
             }
 
             _isClicking = true;
@@ -258,7 +284,8 @@ namespace AdvancedClicker.Forms
             {
                 if (InvokeRequired)
                 {
-                    BeginInvoke(new Action(() => {
+                    BeginInvoke(new Action(() =>
+                    {
                         labelClicksCounter.Text = AppStrings.ResourceManager.GetString("ClickCounterLabel") + ": " + _clickCounter;
                         cpsLabel.Text = "cps: " + Math.Round(_clickCounter / (_stopwatch.ElapsedMilliseconds / 1000.0), 1);
                         labelTimeSeconds.Text = "" + _stopwatch.ElapsedMilliseconds / 1000.0;
@@ -282,23 +309,9 @@ namespace AdvancedClicker.Forms
             await Task.Delay(1);
         }
 
-        private void TrackMouseCoordinates(object sender, DoWorkEventArgs e)
-        {
-            Point coords;
-            string textCoords = "";
-            while (!trackMouseBackgroundWorker.CancellationPending)
-            {
-                coords = MouseControl.GetPosition();                       //track the mouse positoin
-                textCoords = $"x: {coords.X} y: {coords.Y}";
-                trackMouseBackgroundWorker.ReportProgress(0, textCoords);  //and send it to form
-                Thread.Sleep(30);
-            }
-            e.Cancel = true;
-        }
-
         private void UpdateCoordinates(object sender, ProgressChangedEventArgs e)
         {
-            labelMouseCoords.Text = e.UserState.ToString();
+            //labelMouseCoords.Text = e.UserState.ToString();
         }
 
         private void ClickerPage_EnabledChanged(object sender, EventArgs e)
@@ -312,16 +325,6 @@ namespace AdvancedClicker.Forms
                 UnregisterHotKey();
                 if (!_ctsClicker.IsCancellationRequested)
                     _ctsClicker.Cancel();
-            }
-
-            if (trackMouseBackgroundWorker.IsBusy && !this.Enabled)
-            {
-                trackMouseBackgroundWorker.CancelAsync();
-            }
-            else if (!trackMouseBackgroundWorker.IsBusy && this.Enabled && customCoordCheckBox.Checked)
-            {
-                trackMouseBackgroundWorker.RunWorkerAsync();
-                RegisterHotKey();
             }
         }
 
@@ -379,6 +382,82 @@ namespace AdvancedClicker.Forms
             labelClicksCounter.Text = AppStrings.ResourceManager.GetString("ClickCounterLabel") + ": 0";
         }
 
-        
+        private void addClickPointButton_Click(object sender, EventArgs e)
+        {
+            using (ScreenPointSelector sps = new ScreenPointSelector())
+            {
+                sps.ShowDialog();
+                listBox1.Items.Add(sps.Result.MouseCoords.X + ";" +
+                    sps.Result.MouseCoords.Y + ";" + 
+                    sps.Result.MouseButton.ToString() + ";" + 
+                    sps.Result.DelayAfterClick);
+            }
+        }
+
+        private void deleteClickPointButton_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex >= 0)
+            {
+                int lastSelectedIndex = listBox1.SelectedIndex;
+                listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+                if (lastSelectedIndex >= listBox1.Items.Count)
+                    listBox1.SelectedIndex = listBox1.Items.Count - 1;
+                else
+                    listBox1.SelectedIndex = lastSelectedIndex;
+            }
+        }
+
+        private void editClickPointButton_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex < 0)
+            {
+                MessageBox.Show(AppStrings.ResourceManager.GetString("SelectPoint"));
+                return;
+            }
+            ClickPoint clickPoint = new ClickPoint();
+            string[] pointData = listBox1.Items[listBox1.SelectedIndex].ToString().Split(";");
+            clickPoint.MouseCoords = new Point(int.Parse(pointData[0]), int.Parse(pointData[1]));
+            clickPoint.MouseButton =
+                (pointData[2] == "Left") ? MouseButtons.Left :
+                (pointData[2] == "Right") ? MouseButtons.Right :
+                (pointData[2] == "Middle") ? MouseButtons.Middle : MouseButtons.None;
+            clickPoint.DelayAfterClick = int.Parse(pointData[3]);
+            using (EditPoint editPoint = new EditPoint(clickPoint))
+            {
+                editPoint.StartPosition = FormStartPosition.CenterParent;
+                editPoint.ShowDialog();
+                if (editPoint.DialogResult == DialogResult.OK)
+                {
+                    listBox1.Items[listBox1.SelectedIndex] = editPoint.ClickPoint.MouseCoords.X + ";" +
+                    editPoint.ClickPoint.MouseCoords.Y + ";" + editPoint.ClickPoint.MouseButton.ToString() + ";" + editPoint.ClickPoint.DelayAfterClick;
+                }
+            }
+        }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            editClickPointButton.PerformClick();
+        }
+
+        bool mouseDownOnList = false;
+        int itemListIndex = 0;
+        private void listBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDownOnList = true;
+            itemListIndex = listBox1.SelectedIndex;
+        }
+
+        private void listBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDownOnList = false;
+            if (listBox1.SelectedIndex != itemListIndex && listBox1.SelectedIndex != -1)
+            {
+                int lastSelectedIndex = listBox1.SelectedIndex;
+                Object tempObj = listBox1.Items[itemListIndex];
+                listBox1.Items.Remove(listBox1.Items[itemListIndex]);
+                listBox1.Items.Insert(lastSelectedIndex, tempObj);
+                listBox1.SelectedIndex = lastSelectedIndex;
+            }
+        }
     }
 }

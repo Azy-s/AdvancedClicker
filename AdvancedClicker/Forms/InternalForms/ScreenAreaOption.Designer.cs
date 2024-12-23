@@ -32,14 +32,14 @@
             ChooseAreaButton = new Button();
             xPositionTextBox = new TextBox();
             label5 = new Label();
-            widthTextBox = new TextBox();
             label4 = new Label();
-            HeightTextBox = new TextBox();
             labelYCoord = new Label();
             labelXCoord = new Label();
             ChooseDPIButton = new Button();
             label1 = new Label();
             pointsCountLabel = new Label();
+            widthTextBox = new CustomModules.NumericTextBox();
+            heightTextBox = new CustomModules.NumericTextBox();
             SuspendLayout();
             // 
             // yPositionTextBox
@@ -100,21 +100,6 @@
             label5.TabIndex = 19;
             label5.Text = "Высота";
             // 
-            // widthTextBox
-            // 
-            widthTextBox.BackColor = Color.FromArgb(68, 68, 68);
-            widthTextBox.BorderStyle = BorderStyle.FixedSingle;
-            widthTextBox.Cursor = Cursors.IBeam;
-            widthTextBox.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            widthTextBox.ForeColor = Color.White;
-            widthTextBox.Location = new Point(61, 33);
-            widthTextBox.MaxLength = 4;
-            widthTextBox.Name = "widthTextBox";
-            widthTextBox.Size = new Size(56, 27);
-            widthTextBox.TabIndex = 15;
-            widthTextBox.Text = "100";
-            widthTextBox.TextAlign = HorizontalAlignment.Center;
-            // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -127,21 +112,6 @@
             label4.TabIndex = 20;
             label4.Text = "Ширина";
             label4.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // HeightTextBox
-            // 
-            HeightTextBox.BackColor = Color.FromArgb(68, 68, 68);
-            HeightTextBox.BorderStyle = BorderStyle.FixedSingle;
-            HeightTextBox.Cursor = Cursors.IBeam;
-            HeightTextBox.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            HeightTextBox.ForeColor = Color.White;
-            HeightTextBox.Location = new Point(171, 33);
-            HeightTextBox.MaxLength = 4;
-            HeightTextBox.Name = "HeightTextBox";
-            HeightTextBox.Size = new Size(56, 27);
-            HeightTextBox.TabIndex = 16;
-            HeightTextBox.Text = "100";
-            HeightTextBox.TextAlign = HorizontalAlignment.Center;
             // 
             // labelYCoord
             // 
@@ -201,12 +171,44 @@
             pointsCountLabel.TabIndex = 22;
             pointsCountLabel.Text = "0";
             // 
+            // widthTextBox
+            // 
+            widthTextBox.BackColor = Color.FromArgb(68, 68, 68);
+            widthTextBox.BorderStyle = BorderStyle.FixedSingle;
+            widthTextBox.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            widthTextBox.ForeColor = Color.White;
+            widthTextBox.Location = new Point(61, 33);
+            widthTextBox.MaxLength = 4;
+            widthTextBox.Name = "widthTextBox";
+            widthTextBox.Size = new Size(56, 27);
+            widthTextBox.TabIndex = 23;
+            widthTextBox.Text = "100";
+            widthTextBox.TextAlign = HorizontalAlignment.Center;
+            widthTextBox.TextChanged += AreaTextBox_TextChanged;
+            // 
+            // heightTextBox
+            // 
+            heightTextBox.BackColor = Color.FromArgb(68, 68, 68);
+            heightTextBox.BorderStyle = BorderStyle.FixedSingle;
+            heightTextBox.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            heightTextBox.ForeColor = Color.White;
+            heightTextBox.Location = new Point(171, 33);
+            heightTextBox.MaxLength = 4;
+            heightTextBox.Name = "heightTextBox";
+            heightTextBox.Size = new Size(56, 27);
+            heightTextBox.TabIndex = 24;
+            heightTextBox.Text = "100";
+            heightTextBox.TextAlign = HorizontalAlignment.Center;
+            heightTextBox.TextChanged += AreaTextBox_TextChanged;
+            // 
             // ScreenAreaOption
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(82, 82, 82);
             ClientSize = new Size(450, 110);
+            Controls.Add(heightTextBox);
+            Controls.Add(widthTextBox);
             Controls.Add(pointsCountLabel);
             Controls.Add(label1);
             Controls.Add(yPositionTextBox);
@@ -214,9 +216,7 @@
             Controls.Add(ChooseAreaButton);
             Controls.Add(xPositionTextBox);
             Controls.Add(label5);
-            Controls.Add(widthTextBox);
             Controls.Add(label4);
-            Controls.Add(HeightTextBox);
             Controls.Add(labelYCoord);
             Controls.Add(labelXCoord);
             FormBorderStyle = FormBorderStyle.None;
@@ -232,13 +232,13 @@
         private Button ChooseAreaButton;
         private TextBox xPositionTextBox;
         private Label label5;
-        private TextBox widthTextBox;
         private Label label4;
-        private TextBox HeightTextBox;
         private Label labelYCoord;
         private Label labelXCoord;
         private Button ChooseDPIButton;
         private Label label1;
         private Label pointsCountLabel;
+        private CustomModules.NumericTextBox widthTextBox;
+        private CustomModules.NumericTextBox heightTextBox;
     }
 }

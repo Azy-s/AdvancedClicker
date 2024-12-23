@@ -120,4 +120,7 @@
   <data name="ClickCounterLabel" xml:space="preserve">
     <value>Клики</value>
   </data>
+  <data name="SelectPoint" xml:space="preserve">
+    <value>Выберите точку, которую нужно изменить</value>
+  </data>
 </root>

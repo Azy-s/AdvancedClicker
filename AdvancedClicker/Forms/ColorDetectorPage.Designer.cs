@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorDetectorPage));
             colorDialog1 = new ColorDialog();
             colorPickPanel = new Panel();
             comboBox1 = new ComboBox();
@@ -38,12 +39,12 @@
             screenAreaRadioButton = new RadioButton();
             label1 = new Label();
             panel1 = new Panel();
+            delayedStartTextBox = new CustomModules.NumericTextBox();
+            delayedStartCheckBox = new CustomModules.MobileCheckBox();
             startButton = new Button();
             delayedStartHint = new PictureBox();
             stopButton = new Button();
             labelDelayedStart = new Label();
-            delayedStartTextBox = new TextBox();
-            delayedStartCheckBox = new CheckBox();
             label3 = new Label();
             groupBox2 = new GroupBox();
             label13 = new Label();
@@ -180,18 +181,51 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(55, 55, 55);
+            panel1.Controls.Add(delayedStartTextBox);
+            panel1.Controls.Add(delayedStartCheckBox);
             panel1.Controls.Add(startButton);
             panel1.Controls.Add(delayedStartHint);
             panel1.Controls.Add(stopButton);
             panel1.Controls.Add(labelDelayedStart);
-            panel1.Controls.Add(delayedStartTextBox);
-            panel1.Controls.Add(delayedStartCheckBox);
             panel1.Controls.Add(label3);
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 400);
             panel1.Name = "panel1";
             panel1.Size = new Size(700, 80);
             panel1.TabIndex = 14;
+            // 
+            // delayedStartTextBox
+            // 
+            delayedStartTextBox.BackColor = Color.FromArgb(65, 65, 65);
+            delayedStartTextBox.BorderStyle = BorderStyle.FixedSingle;
+            delayedStartTextBox.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            delayedStartTextBox.ForeColor = Color.White;
+            delayedStartTextBox.Location = new Point(576, 27);
+            delayedStartTextBox.MaxLength = 4;
+            delayedStartTextBox.Name = "delayedStartTextBox";
+            delayedStartTextBox.Size = new Size(51, 27);
+            delayedStartTextBox.TabIndex = 13;
+            delayedStartTextBox.Text = "2";
+            delayedStartTextBox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // delayedStartCheckBox
+            // 
+            delayedStartCheckBox.Appearance = Appearance.Button;
+            delayedStartCheckBox.AutoSize = true;
+            delayedStartCheckBox.BackgroundImageLayout = ImageLayout.Stretch;
+            delayedStartCheckBox.FlatAppearance.BorderSize = 0;
+            delayedStartCheckBox.FlatAppearance.CheckedBackColor = Color.FromArgb(82, 82, 82);
+            delayedStartCheckBox.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 82, 82);
+            delayedStartCheckBox.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 82, 82);
+            delayedStartCheckBox.FlatStyle = FlatStyle.Flat;
+            delayedStartCheckBox.ForeColor = Color.White;
+            delayedStartCheckBox.Image = (Image)resources.GetObject("delayedStartCheckBox.Image");
+            delayedStartCheckBox.Location = new Point(352, 26);
+            delayedStartCheckBox.Name = "delayedStartCheckBox";
+            delayedStartCheckBox.Size = new Size(50, 28);
+            delayedStartCheckBox.TabIndex = 9;
+            delayedStartCheckBox.UseVisualStyleBackColor = true;
+            delayedStartCheckBox.CheckedChanged += mobileCheckBox1_CheckedChanged;
             // 
             // startButton
             // 
@@ -247,40 +281,6 @@
             labelDelayedStart.Size = new Size(141, 18);
             labelDelayedStart.TabIndex = 3;
             labelDelayedStart.Text = "Отложенный старт";
-            // 
-            // delayedStartTextBox
-            // 
-            delayedStartTextBox.BackColor = Color.FromArgb(68, 68, 68);
-            delayedStartTextBox.BorderStyle = BorderStyle.FixedSingle;
-            delayedStartTextBox.Cursor = Cursors.IBeam;
-            delayedStartTextBox.Enabled = false;
-            delayedStartTextBox.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            delayedStartTextBox.ForeColor = Color.White;
-            delayedStartTextBox.Location = new Point(576, 26);
-            delayedStartTextBox.MaxLength = 7;
-            delayedStartTextBox.Name = "delayedStartTextBox";
-            delayedStartTextBox.Size = new Size(51, 27);
-            delayedStartTextBox.TabIndex = 8;
-            delayedStartTextBox.Text = "2";
-            delayedStartTextBox.TextAlign = HorizontalAlignment.Center;
-            // 
-            // delayedStartCheckBox
-            // 
-            delayedStartCheckBox.Appearance = Appearance.Button;
-            delayedStartCheckBox.AutoSize = true;
-            delayedStartCheckBox.BackgroundImageLayout = ImageLayout.Stretch;
-            delayedStartCheckBox.FlatAppearance.BorderSize = 0;
-            delayedStartCheckBox.FlatAppearance.CheckedBackColor = Color.FromArgb(55, 55, 55);
-            delayedStartCheckBox.FlatAppearance.MouseDownBackColor = Color.FromArgb(55, 55, 55);
-            delayedStartCheckBox.FlatAppearance.MouseOverBackColor = Color.FromArgb(55, 55, 55);
-            delayedStartCheckBox.FlatStyle = FlatStyle.Flat;
-            delayedStartCheckBox.ForeColor = Color.White;
-            delayedStartCheckBox.Image = Properties.Resources.checkbox_off_darkicon;
-            delayedStartCheckBox.Location = new Point(352, 25);
-            delayedStartCheckBox.Name = "delayedStartCheckBox";
-            delayedStartCheckBox.Size = new Size(50, 28);
-            delayedStartCheckBox.TabIndex = 9;
-            delayedStartCheckBox.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -530,8 +530,6 @@
         private PictureBox delayedStartHint;
         private Button stopButton;
         private Label labelDelayedStart;
-        private TextBox delayedStartTextBox;
-        private CheckBox delayedStartCheckBox;
         private Label label3;
         private Panel panel2;
         private GroupBox groupBox2;
@@ -550,5 +548,7 @@
         private Label label12;
         private Label label11;
         private Label label13;
+        private CustomModules.MobileCheckBox delayedStartCheckBox;
+        private CustomModules.NumericTextBox delayedStartTextBox;
     }
 }

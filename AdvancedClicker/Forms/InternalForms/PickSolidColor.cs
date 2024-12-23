@@ -24,6 +24,7 @@ namespace AdvancedClicker.Forms.InternalForms
         {
             InitializeComponent();
             flowLayoutPanel1.HorizontalScroll.Enabled = false;
+            AddColorButton_Click(AddColorButton_Click, new EventArgs());
         }
 
 
@@ -100,7 +101,12 @@ namespace AdvancedClicker.Forms.InternalForms
             {
                 if (pickcolor.ShowDialog() == DialogResult.OK)
                 {
-                    _colorButtons.Find(b => b.Tag != null && (int)b.Tag == (int)((Button)sender).Tag).BackColor = pickcolor.Result;
+                    Button colorButton = _colorButtons.Find(b => b.Tag != null && (int)b.Tag == (int)((Button)sender).Tag);
+                    colorButton.BackColor = pickcolor.Result;
+                    if (pickcolor.Result.R + pickcolor.Result.G + pickcolor.Result.B > 350)
+                        colorButton.BackgroundImage = Resources.colorpicker_black_icon;
+                    else
+                        colorButton.BackgroundImage = Resources.colorpicker_white_icon;
                 }
                 pickcolor.Dispose();
             }

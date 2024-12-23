@@ -110,7 +110,7 @@
             aimModeCheckbox.FlatStyle = FlatStyle.Flat;
             aimModeCheckbox.ForeColor = Color.White;
             aimModeCheckbox.Image = (Image)resources.GetObject("aimModeCheckbox.Image");
-            aimModeCheckbox.Location = new Point(388, 2);
+            aimModeCheckbox.Location = new Point(388, 37);
             aimModeCheckbox.Name = "aimModeCheckbox";
             aimModeCheckbox.Size = new Size(50, 28);
             aimModeCheckbox.TabIndex = 9;
@@ -122,7 +122,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             label1.ForeColor = SystemColors.Control;
-            label1.Location = new Point(205, 5);
+            label1.Location = new Point(205, 40);
             label1.Name = "label1";
             label1.Size = new Size(91, 20);
             label1.TabIndex = 23;
@@ -133,7 +133,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             label2.ForeColor = SystemColors.Control;
-            label2.Location = new Point(205, 39);
+            label2.Location = new Point(205, 8);
             label2.Name = "label2";
             label2.Size = new Size(186, 20);
             label2.TabIndex = 23;
@@ -153,7 +153,7 @@
             isColorInCenterCheckBox.FlatStyle = FlatStyle.Flat;
             isColorInCenterCheckBox.ForeColor = Color.White;
             isColorInCenterCheckBox.Image = (Image)resources.GetObject("isColorInCenterCheckBox.Image");
-            isColorInCenterCheckBox.Location = new Point(388, 36);
+            isColorInCenterCheckBox.Location = new Point(388, 5);
             isColorInCenterCheckBox.Name = "isColorInCenterCheckBox";
             isColorInCenterCheckBox.Size = new Size(50, 28);
             isColorInCenterCheckBox.TabIndex = 9;

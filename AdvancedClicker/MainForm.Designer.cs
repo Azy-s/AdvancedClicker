@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             closeFormButton = new Button();
             minimizeFormButton = new Button();
             panelMenu = new Panel();
@@ -197,7 +198,7 @@
             // 
             // logoPictureBox
             // 
-            logoPictureBox.BackgroundImage = Properties.Resources.main_logo512;
+            logoPictureBox.BackgroundImage = Properties.Resources.newlogobg;
             logoPictureBox.BackgroundImageLayout = ImageLayout.Stretch;
             logoPictureBox.Location = new Point(8, 4);
             logoPictureBox.Name = "logoPictureBox";
@@ -252,8 +253,9 @@
             Controls.Add(mainPanel);
             Controls.Add(panel1);
             Controls.Add(panelMenu);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
-            Text = "MainForm";
+            Text = "Advanced Clicker";
             MouseDown += Form1_MouseDown;
             panelMenu.ResumeLayout(false);
             panelLogo.ResumeLayout(false);

@@ -12,7 +12,7 @@
 
         public List<Point> Points { get; set; }
 
-        public MouseButton MouseButton { get; set; }
+        public MouseButtons MouseButton { get; set; }
         public bool FolowMouseCursor { get; set; }
         public float Smoothness { get; set; }
         public int ScreenPosX { get; set; }
@@ -27,8 +27,8 @@
         public int RandomHoldButtonTime { get; set; }
 
 
-        public ColorDetectData(Color colorGradient1, Color colorGradient2, List<Color> solidColors = null, int offset = 0, bool isGradient = false, bool isSolidColor = false,
-            MouseButton button = MouseButton.Left, List<Point> points = null, bool folowMouseCursor = false,
+        public ColorDetectData(Color colorGradient1, Color colorGradient2, List<Color> solidColors, List<Point> points, int offset = 0, bool isGradient = false, bool isSolidColor = false,
+            MouseButtons button = MouseButtons.Left, bool folowMouseCursor = false,
             int screenPosX = 0, int screenPosY = 0, int areaWidth = 0, int areaheight = 0, float smooothness = 1,
             bool isAimMode = true, int delayAfterClick = 0, int randomDelayAfterClick = 0, int holdButtonTime = 0, int randomHoldButtonTIme = 0, bool isColorInCenter = true)
         {

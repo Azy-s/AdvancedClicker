@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             flowLayoutPanel1 = new FlowLayoutPanel();
-            button2 = new Button();
+            addColorButton = new Button();
             roundTrackBar1 = new RoundTrackBar();
             label1 = new Label();
             label2 = new Label();
@@ -46,18 +46,18 @@
             flowLayoutPanel1.Size = new Size(200, 213);
             flowLayoutPanel1.TabIndex = 0;
             // 
-            // button2
+            // addColorButton
             // 
-            button2.BackColor = Color.FromArgb(64, 64, 64);
-            button2.FlatAppearance.BorderColor = Color.Gray;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(206, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(238, 29);
-            button2.TabIndex = 1;
-            button2.Text = "Добавить";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += AddColorButton_Click;
+            addColorButton.BackColor = Color.FromArgb(64, 64, 64);
+            addColorButton.FlatAppearance.BorderColor = Color.Gray;
+            addColorButton.FlatStyle = FlatStyle.Flat;
+            addColorButton.Location = new Point(206, 3);
+            addColorButton.Name = "addColorButton";
+            addColorButton.Size = new Size(238, 29);
+            addColorButton.TabIndex = 1;
+            addColorButton.Text = "Добавить";
+            addColorButton.UseVisualStyleBackColor = false;
+            addColorButton.Click += AddColorButton_Click;
             // 
             // roundTrackBar1
             // 
@@ -117,7 +117,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(roundTrackBar1);
-            Controls.Add(button2);
+            Controls.Add(addColorButton);
             Controls.Add(flowLayoutPanel1);
             DoubleBuffered = true;
             ForeColor = Color.White;
@@ -132,7 +132,7 @@
         #endregion
 
         private FlowLayoutPanel flowLayoutPanel1;
-        private Button button2;
+        private Button addColorButton;
         private RoundTrackBar roundTrackBar1;
         private Label label1;
         private Label label2;

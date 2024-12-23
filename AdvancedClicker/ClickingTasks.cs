@@ -1,9 +1,13 @@
 ﻿using AdvancedClicker.Data;
 using AdvancedClicker.Forms;
 using AdvancedClicker.Utilities;
+using Microsoft.VisualBasic.Logging;
+using System.ComponentModel;
 using System.Data.SqlTypes;
 using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
+using Windows.ApplicationModel.UserDataAccounts.SystemAccess;
 using WindowsInput;
 
 namespace AdvancedClicker
@@ -17,25 +21,25 @@ namespace AdvancedClicker
         [DllImport("winmm.dll", EntryPoint = "timeEndPeriod", ExactSpelling = true)]
         private static extern uint TimeEndPeriod(uint uPeriod);
 
-
+        private delegate void ClickMouse(Point p);
+        private delegate void ButtonDown();
+        private delegate void ButtonUp();
+        private static void nullAction() { }
+        private static void nullActionPoint(Point point) 
+        {
+            MouseControl.SetPosition(point);
+        }
 
         private delegate void ClickMouseCords(Point coords);
         public static async Task MouseClicker(CancellationToken cancellationToken, Data.ClickData clickData)
         {
-            ClickMouseCords clickMouse = MouseControl.LeftClick;
+            ClickMouse clickMouse = MouseControl.LeftClick;
 
-            switch (((int)clickData.MouseButton))
-            {
-                case 1:
-                    clickMouse = MouseControl.LeftClick;
-                    break;
-                case 2:
-                    clickMouse = MouseControl.RightClick;
-                    break;
-                case 3:
-                    clickMouse = MouseControl.MiddleClick;
-                    break;
-            }
+            clickMouse =
+                            ((int)MouseButtons.Left == (int)clickData.MouseButton) ? MouseControl.LeftClick :
+                            ((int)MouseButtons.Right == (int)clickData.MouseButton) ? MouseControl.RightClick :
+                            ((int)MouseButtons.Middle == (int)clickData.MouseButton) ? MouseControl.MiddleClick :
+                            nullActionPoint;
 
             //sets windows timer to 1ms
             TimeBeginPeriod(1);
@@ -44,30 +48,53 @@ namespace AdvancedClicker
 
             while (!cancellationToken.IsCancellationRequested)
             {
-                if (!clickData.IsMouseCoordEnabled) 
-                    clickData.MouseCoords = MouseControl.GetPosition();
-
-                clickMouse(clickData.MouseCoords);
-
-                if (clickData.IsClickLimitEnabled)
+                if (clickData.IsMouseCoordEnabled)
                 {
-                    clickCounter++;
-                    if (clickCounter > clickData.ClickCountLimit)
-                        break;
+                    foreach (ClickPoint point in clickData.ClickPoints)
+                    {
+                        if (cancellationToken.IsCancellationRequested)
+                            break;
+
+                        clickMouse =
+                            ((int)MouseButtons.Left == (int)point.MouseButton) ? MouseControl.LeftClick :
+                            ((int)MouseButtons.Right == (int)point.MouseButton) ? MouseControl.RightClick :
+                            ((int)MouseButtons.Middle == (int)point.MouseButton) ? MouseControl.MiddleClick :
+                            nullActionPoint;
+
+                        clickMouse(point.MouseCoords);
+
+                        if (clickData.IsClickLimitEnabled)
+                        {
+                            clickCounter++;
+                            if (clickCounter > clickData.ClickCountLimit)
+                                break;
+                        }
+
+                        await Task.Delay(clickData.ClickDelay);
+                        if (clickData.IsRandomEnabled)
+                            await Task.Delay(random.Next(clickData.ClickRandomDelay));
+                        await Task.Delay(point.DelayAfterClick);
+                    }
                 }
+                else
+                {
+                    clickMouse(MouseControl.GetPosition());
 
+                    await Task.Delay(clickData.ClickDelay);
+                    if (clickData.IsRandomEnabled)
+                        await Task.Delay(random.Next(clickData.ClickRandomDelay));
 
-                await Task.Delay(clickData.ClickDelay);
-                if (clickData.IsRandomEnabled)
-                    await Task.Delay(random.Next(clickData.ClickRandomDelay));
+                    if (clickData.IsClickLimitEnabled)
+                    {
+                        clickCounter++;
+                        if (clickCounter > clickData.ClickCountLimit)
+                            break;
+                    }
+                }
             }
             TimeEndPeriod(1);
         }
 
-        private delegate void ClickMouse();
-        private delegate void ButtonDown();
-        private delegate void ButtonUp();
-        private static void nullAction() { }
         public static async void ColorDetectionTask(CancellationToken cancellationToken, Data.ColorDetectData data)
         {
             
@@ -75,22 +102,22 @@ namespace AdvancedClicker
             ButtonDown buttonDown = MouseControl.LeftDown;
             ButtonUp buttonUp = MouseControl.LeftUp;
             Random random = new Random(DateTime.Today.Millisecond);
-
+            
             switch (((int)data.MouseButton))
             {
                 case 0:
                     buttonDown = nullAction;
                     buttonUp = nullAction;
                     break;
-                case 1:
+                case 0x00100000:
                     buttonDown = MouseControl.LeftDown;
                     buttonUp = MouseControl.LeftUp;
                     break;
-                case 2:
+                case 0x00200000:
                     buttonDown = MouseControl.RightDown;
                     buttonUp = MouseControl.RightUp;
                     break;
-                case 3:
+                case 0x00400000:
                     buttonDown = MouseControl.MiddleDown;
                     buttonUp = MouseControl.MiddleUp;
                     break;

@@ -136,8 +136,8 @@
   <data name="pick_radius_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pick_radius_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="colorpicker_black_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\colorpicker_black_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="9042463_language_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\9042463_language_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="clicker_page_icon32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clicker_page_icon32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,8 +145,8 @@
   <data name="stop_disabled_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stop_disabled_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="form_not_pinned_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\form_not_pinned_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="main_logo512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\main_logo512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="triger_page_icon32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\triger_page_icon32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -159,6 +159,9 @@
   </data>
   <data name="8664826_keyboard_computer_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\8664826_keyboard_computer_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit_icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="minimize_window_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minimize_window_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,20 +181,23 @@
   <data name="close_window_white_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\close_window_white_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="9042463_language_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\9042463_language_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dpi_red_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dpi_red_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="newlogobg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newlogobg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="play_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\play_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="form_not_pinned_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\form_not_pinned_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="maximize_window_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\maximize_window_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="checkbox_on_darkicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\checkbox_on_darkicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="add_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add_icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="setting_page_icon32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\setting_page_icon32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,6 +214,12 @@
   <data name="minimize_window_white_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minimize_window_white_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="colorpicker_black_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\colorpicker_black_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dpi_red_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dpi_red_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="colorpicker_white_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\colorpicker_white_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -220,7 +232,16 @@
   <data name="hint_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hint_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="main_logo512" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\main_logo512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="edit_icon_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit_icon_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="add_disabled_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add_disabled_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="close_window_disabled_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close_window_disabled_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_disabled_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit_disabled_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -120,4 +120,7 @@
   <data name="ClickCounterLabel" xml:space="preserve">
     <value>Clicks</value>
   </data>
+  <data name="SelectPoint" xml:space="preserve">
+    <value>Select the point before editing</value>
+  </data>
 </root>

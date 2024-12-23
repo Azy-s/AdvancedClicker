@@ -1,13 +1,11 @@
 ﻿namespace AdvancedClicker.Data
 {
-    public enum MouseButton
+    public struct ClickPoint
     {
-        None,
-        Left,
-        Right,
-        Middle
+        public Point MouseCoords { get; set; }
+        public MouseButtons MouseButton { get; set; }
+        public int DelayAfterClick { get; set; }
     }
-
     public struct ClickData
     {
         public int ClickDelay { get; set; }        // ms
@@ -18,22 +16,25 @@
         public bool IsClickLimitEnabled { get; set; }
         public int ClickCountLimit { get; set; }
 
-        public MouseButton MouseButton { get; set; }
+        public MouseButtons MouseButton { get; set; }
 
         public bool IsMouseCoordEnabled { get; set; }
         public Point MouseCoords { get; set; }
 
+        public List<ClickPoint> ClickPoints { get; set; }
 
-        public ClickData(int clickDelay = 5, bool isRandomEnabled = false, int clickRandomDelay = 0, bool isClickLimitEnabled = false, int clickCountLimit = 0, MouseButton mouseButton = MouseButton.Left, bool isMouseCoordEnabled = false, Point mouseCoords = new Point())
+
+        public ClickData(List<ClickPoint> clickPoints, int clickDelay = 5, bool isRandomEnabled = false, int clickRandomDelay = 0, bool isClickLimitEnabled = false, int clickCountLimit = 0, MouseButtons mouseButton = MouseButtons.Left, bool isMouseCoordEnabled = false, Point mouseCoords = new Point())
         {
-            ClickDelay = clickDelay;
-            IsRandomEnabled = isRandomEnabled;
-            ClickRandomDelay = clickRandomDelay;
-            IsClickLimitEnabled = isClickLimitEnabled;
-            ClickCountLimit = clickCountLimit;
-            MouseButton = mouseButton;
-            IsMouseCoordEnabled = isMouseCoordEnabled;
-            MouseCoords = mouseCoords;
+            this.ClickPoints = clickPoints;
+            this.ClickDelay = clickDelay;
+            this.IsRandomEnabled = isRandomEnabled;
+            this.ClickRandomDelay = clickRandomDelay;
+            this.IsClickLimitEnabled = isClickLimitEnabled;
+            this.ClickCountLimit = clickCountLimit;
+            this.MouseButton = mouseButton;
+            this.IsMouseCoordEnabled = isMouseCoordEnabled;
+            this.MouseCoords = mouseCoords;
         }
     }
 }

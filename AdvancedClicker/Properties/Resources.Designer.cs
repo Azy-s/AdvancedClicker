@@ -93,6 +93,26 @@ namespace AdvancedClicker.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_disabled_icon {
+            get {
+                object obj = ResourceManager.GetObject("add_disabled_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_icon {
+            get {
+                object obj = ResourceManager.GetObject("add_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap capture_area_icon {
             get {
                 object obj = ResourceManager.GetObject("capture_area_icon", resourceCulture);
@@ -136,6 +156,16 @@ namespace AdvancedClicker.Properties {
         internal static System.Drawing.Bitmap clicker_page_icon32 {
             get {
                 object obj = ResourceManager.GetObject("clicker_page_icon32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close_window_disabled_icon {
+            get {
+                object obj = ResourceManager.GetObject("close_window_disabled_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +246,36 @@ namespace AdvancedClicker.Properties {
         internal static System.Drawing.Bitmap dpi_red_icon {
             get {
                 object obj = ResourceManager.GetObject("dpi_red_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_disabled_icon {
+            get {
+                object obj = ResourceManager.GetObject("edit_disabled_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_icon {
+            get {
+                object obj = ResourceManager.GetObject("edit_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_icon_gray {
+            get {
+                object obj = ResourceManager.GetObject("edit_icon_gray", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -306,6 +366,16 @@ namespace AdvancedClicker.Properties {
         internal static System.Drawing.Bitmap minimize_window_white_icon {
             get {
                 object obj = ResourceManager.GetObject("minimize_window_white_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newlogobg {
+            get {
+                object obj = ResourceManager.GetObject("newlogobg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
