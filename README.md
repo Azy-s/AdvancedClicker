@@ -19,10 +19,14 @@
 
 | Кликер |
 |----|
-|![Скриншот 1](https://i.postimg.cc/nr2KrZTC/logo.png)|
+|![Скриншот 1](https://i.postimg.cc/MG6cqvXt/Clicker-Page.png)|
+
 | Детектор цвета |
-|![Скриншот 1](https://i.postimg.cc/nr2KrZTC/logo.png)|
+|----|
+|![Скриншот 1](https://i.postimg.cc/s2TMXshz/Color-Detect-Page.png)|
+
 | ТригерБот |
+|----|
 |![Скриншот 1](https://i.postimg.cc/nr2KrZTC/logo.png)|
 
 ---
