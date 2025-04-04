@@ -19,12 +19,12 @@ An application for automating clicks with advanced features!
 
 | Clicker |
 |----|
-|![Screenshot 1](https://i.postimg.cc/nr2KrZTC/logo.png)|  
+|![Screenshot 1](https://i.postimg.cc/MG6cqvXt/Clicker-Page.png)|  
 | Color Detector |
-|![Screenshot 2](https://i.postimg.cc/nr2KrZTC/logo.png)|  
+|![Screenshot 2](https://i.postimg.cc/s2TMXshz/Color-Detect-Page.png)|  
+|![Пример](images/color-example.gif)|
 | Triggerbot |
-|![Screenshot 3](https://i.postimg.cc/nr2KrZTC/logo.png)|  
-
+|Work in progress|
 ---
 
 ## 📊 Statistics
