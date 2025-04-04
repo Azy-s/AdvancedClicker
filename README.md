@@ -24,10 +24,12 @@
 | Детектор цвета |
 |----|
 |![Скриншот 1](https://i.postimg.cc/s2TMXshz/Color-Detect-Page.png)|
+|![Пример](images/color-example.gif)|
 
 | ТригерБот |
 |----|
-|![Скриншот 1](https://i.postimg.cc/nr2KrZTC/logo.png)|
+|В разработке|
+
 
 ---
 
